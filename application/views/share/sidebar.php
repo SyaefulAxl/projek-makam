@@ -4,7 +4,7 @@
     <div class="user-profile px-20 py-15">
       <div class="d-flex align-items-center">
         <div class="image">
-          <img src="images/avatar/avatar-13.png" class="avatar avatar-lg bg-primary-light" alt="User Image">
+          <img src="<?php echo base_url(); ?>images/avatar/avatar-13.png" class="avatar avatar-lg bg-primary-light" alt="User Image">
         </div>
         <div class="info">
           <a class="dropdown-toggle px-20" data-toggle="dropdown" href="#">Admin Makam</a>
@@ -31,7 +31,7 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="<?php echo base_url(); ?>"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Data</a></li>
-          <li><a href="index2.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Ahli Waris</a></li>
+          <li><a href="<?php echo base_url(); ?>Ahliwaris"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Ahli Waris</a></li>
           <li><a href="index3.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Lokasi</a></li>
           <li><a href="index4.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Retribusi</a></li>
         </ul>

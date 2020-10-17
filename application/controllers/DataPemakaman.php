@@ -1,24 +1,24 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Pemakaman extends CI_Controller
+class DataPemakaman extends CI_Controller
 {
 
     public function __construct()
     {
         parent::__construct();
-        $this->load->model("PemakamanModel");
+        $this->load->model("M_Datamakam");
         $this->load->library('form_validation');
     }
 
     public function index()
     {
-        $data["pemakaman"] = $this->PemakamanModel->getAll();
+        $data["pemakaman"] = $this->M_Datamakam->getAll();
         if ($this->input->post('keyword')) {
-            $data['pemakaman'] = $this->PemakamanModel->cariDataPemakaman();
+            $data['pemakaman'] = $this->M_Datamakam->cariDataPemakaman();
         }
         //print_r($data);
-        $this->load->view('pemakaman/index', $data);
+        $this->load->view('datapemakaman/index', $data);
     }
 
     public function Tambah()
@@ -40,9 +40,9 @@ class Pemakaman extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
 
 
-            $this->load->view('pemakaman/tambah');
+            $this->load->view('datapemakaman/tambah');
         } else {
-            $this->PemakamanModel->tambahDataPemakaman();
+            $this->M_Datamakam->tambahDataPemakaman();
             $this->session->set_flashdata('flash', 'Ditambahkan');
             redirect('/');
         }
@@ -53,14 +53,14 @@ class Pemakaman extends CI_Controller
     {
 
         $where = array('id_makam' => $id_makam);
-        $data['pemakaman'] = $this->PemakamanModel->edit_data($where, 'pemakaman')->row();
-        $this->load->view('pemakaman/detail', $data);
+        $data['pemakaman'] = $this->M_Datamakam->edit_data($where, 'pemakaman')->row();
+        $this->load->view('datapemakaman/detail', $data);
     }
 
     function hapus($id_makam)
     {
         $where = array('id_makam' => $id_makam);
-        $this->PemakamanModel->hapus_data($where, 'pemakaman');
+        $this->M_Datamakam->hapus_data($where, 'pemakaman');
         $this->session->set_flashdata('flash', 'Dihapus');
         redirect('/');
     }
@@ -68,8 +68,8 @@ class Pemakaman extends CI_Controller
     function edit($id_makam)
     {
         $where = array('id_makam' => $id_makam);
-        $data['pemakaman'] = $this->PemakamanModel->edit_data($where, 'pemakaman')->row();
-        $this->load->view('pemakaman/edit', $data);
+        $data['pemakaman'] = $this->M_Datamakam->edit_data($where, 'pemakaman')->row();
+        $this->load->view('datapemakaman/edit', $data);
     }
 
     public function update()
@@ -101,7 +101,7 @@ class Pemakaman extends CI_Controller
             'id_makam' => $id_makam
         );
 
-        $this->PemakamanModel->update_data($where, $data, 'pemakaman');
+        $this->M_Datamakam->update_data($where, $data, 'pemakaman');
         $this->session->set_flashdata('flash', 'Diupdate');
         redirect('/');
     }
